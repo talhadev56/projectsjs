@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BURGER POINT</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+        div{
+            margin-left: 300px;
+            padding: 15px;
+        }
+        h1{
+            color: #d35400;
+           margin-left: 200px;
+        }
+        button{
+            background-color: #d35400;
+            color: white;
+            padding: 10px;
+            margin-left: 200px;
+            border: none;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 30%;
+            margin-top: 50px;
+        }
+        input,select{
+            padding: 10px;
+        }
+        ol{
+            list-style-type: circle;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+             <h1>ALLAH WALA BURGER POINT</h1>
+             <h2>QUANTITY:</h2>
+             <label for="sm">SMALL</label>
+             <input type="number" id="s" class="sm" min="0" placeholder="Enter quantity">
+             <label for="md">MEDIUM</label>
+             <input type="number" id="m" class="md" min="0" placeholder="Enter quantity">
+             <label for="lg">LARGE</label>
+             <input type="number" id="l" class="lg" min="0" placeholder="Enter quantity">
+             <h2>FLAVOUR:</h2>
+             <label for="flavour">Flavour </label>
+             <select name="flavour" id="flavour-sm">
+                <option value="ANDA SHAMI">ANDA SHAMI</option>
+                <option value="ZINGER">ZINGER</option>
+                <option value="CHEEZE BURGER">CHEEZE BURGER</option>
+                <option value="SPECIAL BURGER">SPECIAL BURGER</option>
+             </select>
+
+             <label for="flavour">Flavour </label>
+             <select name="flavour" id="flavour-md" >
+                <option value="ANDA SHAMI">ANDA SHAMI</option>
+                <option value="ZINGER">ZINGER</option>
+                <option value="CHEEZE BURGER">CHEEZE BURGER</option>
+                <option value="SPECIAL BURGER">SPECIAL BURGER</option>
+             </select>
+
+             <label for="flavour">Flavour </label>
+             <select name="flavour" id="flavour-lg" >
+                <option value="ANDA SHAMI">ANDA SHAMI</option>
+                <option value="ZINGER">ZINGER</option>
+                <option value="CHEEZE BURGER">CHEEZE BURGER</option>
+                <option value="SPECIAL BURGER">SPECIAL BURGER</option>
+             </select><br><br>
+             <button type="submit" onclick="bill()">ORDER</button>
+             <h3 id="output"></h3>
+        </div>
+    </section>
+    
+
+<script>
+    function bill(){
+        let name1 = document.getElementById('s').value;
+        let name2 = document.getElementById('m').value;
+        let name3 = document.getElementById('l').value;
+
+        let flavourSm = document.getElementById('flavour-sm').value;
+        let flavourMd = document.getElementById('flavour-md').value;
+        let flavourLg = document.getElementById('flavour-lg').value;
+
+        var sb = name1*100;
+        var mb = name2*200;
+        var lb = name3*300;
+        var tb = sb+mb+lb;
+
+        let outbill = "<ol>";
+        outbill += `<li>Small burger (${flavourSm}): ${sb} PKR</li>`;
+        outbill += `<li>Medium burger (${flavourMd}): ${mb} PKR</li>`;
+        outbill += `<li>Large burger (${flavourLg}): ${lb} PKR</li>`;
+        outbill += `<li><strong>Total bill: ${tb} PKR</strong></li>`;
+        outbill += "</ol>";
+
+        document.getElementById('output').innerHTML = outbill;
+    }
+   
+</script>
+
+</body>
+</html>
+
