@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulb Toggle</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+    #bulb {
+      height: 300px;
+      width: 300px;
+      border-radius: 50%;
+      border: 4px solid #000;
+      background-color: transparent;
+      margin-bottom: 40px;
+    }
+    button {
+      padding: 10px 25px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="bulb"></div>
+  <button id="btn">ON</button>
+
+  <script>
+    var bulb = document.querySelector("#bulb");
+    var btn = document.querySelector("#btn");
+    var flag = 0;
+
+    btn.addEventListener("click", function () {
+      if (flag === 0) {
+        bulb.style.backgroundColor = "yellow";
+        btn.textContent = "OFF";
+        flag = 1;
+      } else {
+        bulb.style.backgroundColor = "transparent";
+        btn.textContent = "ON";
+        flag = 0;
+      }
+    });
+  </script>
+</body>
+</html>
