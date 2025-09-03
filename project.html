@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friend Toggle Card</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    html, body{
+      width: 100%;
+      height: 100%;
+    }
+
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: cornflowerblue;
+    }
+
+    #main{
+      border-radius: 15px;
+      width: 300px; 
+      max-width: 95%;
+      background-color: #fff;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    #main img{
+      height: 250px;  
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    #main h1{
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    #main h3{
+      color: red;
+      margin-bottom: 25px;
+      font-size: 1.2rem;
+    }
+
+    #main button{
+      background-color: rgb(20, 190, 190);
+      padding: 14px 28px;
+      cursor: pointer;
+      border-radius: 50px;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      transition: 0.3s ease;
+      display: block;
+      margin: 0 auto;
+    }
+
+    #main button:hover{
+      background-color: rgb(16, 150, 150);
+    }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4JUFJEqgxJ96ndAQUf-F10OT38Bx86ZGlwA&s" alt="Profile picture of Ramsha Khan">
+    <h1>MINZA KHAN</h1>
+    <h3>STRANGER</h3>
+    <button>ADD FRIEND</button>
+  </div>
+
+  <script>
+    const button = document.querySelector("button");
+    const statusText = document.querySelector("h3");
+
+    let isFriend = false;
+
+    button.addEventListener("click", function () {
+      isFriend = !isFriend;
+
+      if (isFriend) {
+        statusText.textContent = "FRIENDS";
+        statusText.style.color = "green";
+        button.textContent = "REMOVE FRIEND";
+      } else {
+        statusText.textContent = "STRANGER";
+        statusText.style.color = "red";
+        button.textContent = "ADD FRIEND";
+      }
+    });
+  </script>
+</body>
+</html>
