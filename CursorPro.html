@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CURSOR EFFECT</title>
+  <style>
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Gilroy';
+    color: #fff;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: #111;
+}
+.elem{   
+    width: 100%;
+    height: 120px;   
+    border-bottom: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+} 
+.elem h1{
+    font-size: 6vw;
+    position: relative;
+    z-index: 9;
+    mix-blend-mode: difference;
+}
+.elem img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    opacity: 0;
+    transition: all linear 0.25s;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+}
+  </style>
+</head>
+<body>
+    <div id="main">
+       <div id="elem1" class="elem">
+        <h1>TalhaAkram</h1>
+        <img src="https://cdn.pixabay.com/photo/2020/02/28/05/23/aesthetic-4886533_960_720.jpg" alt="">
+       </div>
+       <div class="elem">
+       <h1>AliAkram</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmWpcMQ-GkCuoYDqNfg0Lg-t20U3wU18qaIg&s" alt="">
+       </div>
+       <div class="elem">
+        <h1>ArhamBinTuqeer</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTHfk22OZfPenP4voL3FUbTtNuZmrxaiq8PQ&s" alt="">
+       </div>
+       <div class="elem">
+        <h1>OrhanBinTuqeer</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC9QI-rC14Lg_NC-MqwKHUMz3YMWvtPbVlCg&s" alt="">
+       </div>
+    </div>
+
+    <script>
+  var elems = document.querySelectorAll(".elem");
+  elems.forEach(function(val){
+    var imgNode = null;
+    for (var i = 0; i < val.childNodes.length; i++) {
+      var node = val.childNodes[i];
+      if (node.nodeType === 1 && node.tagName === 'IMG') {
+        imgNode = node;
+        break;
+      }
+    }
+    if (!imgNode) return;
+    val.addEventListener("mouseenter", function(){
+      imgNode.style.opacity = 1;
+    });
+    val.addEventListener("mouseleave", function(){
+      imgNode.style.opacity = 0;
+    });
+    val.addEventListener("mousemove", function(dets){
+      var rect = val.getBoundingClientRect();
+      var x = dets.clientX - rect.left;
+      var y = dets.clientY - rect.top;
+      imgNode.style.left = x + "px";
+      imgNode.style.top  = y + "px";
+    });
+  });
+    </script>
+</body>
+</html>
