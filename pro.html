@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INSTA PAGE</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Gilroy";
+        color: #fff;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        background-color: rgb(0, 208, 255);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #card {
+        height: 400px;
+        width: 240px;
+        background-color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        border: 3px solid black;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      #storiyan {
+        height: 100px;
+        width: 100%;
+        border-bottom: 1px solid #dadada;
+        padding: 20px;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      #storiyan::-webkit-scrollbar {
+        display: none;
+      }
+      .story {
+        border: 3px solid red;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 8px;
+      }
+      .story img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      #extra-image {
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      #fullscreen {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="card">
+      <div id="fullscreen"></div>
+      <div id="storiyan"></div>
+
+      <img
+        id="extra-image"
+        src="https://images.unsplash.com/photo-1731576089516-4c707e89e997?w=600&auto=format&fit=crop&q=60"
+        alt="Extra"
+      />
+    </div>
+
+    <script>
+      var arr = [
+        {
+          dp: "https://images.unsplash.com/photo-1731576089516-4c707e89e997?w=600&auto=format&fit=crop&q=60",
+          story:
+            "https://images.unsplash.com/photo-1734000402740-dc480cbbaeb6?w=600&auto=format&fit=crop&q=60",
+        },
+        {
+          dp: "https://images.unsplash.com/photo-1732965750714-a97cdbbd7ed1?w=600&auto=format&fit=crop&q=60",
+          story:
+            "https://images.unsplash.com/photo-1732282602321-d589174d0679?w=600&auto=format&fit=crop&q=60",
+        },
+        {
+          dp: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOyvD2xo5ej-mTYE57d19NWzVTLrohFxLRUA&s",
+          story:
+            "https://plus.unsplash.com/premium_photo-1722723599308-e61f8c603a6f?w=600&auto=format&fit=crop&q=60",
+        },
+        {
+          dp: "https://plus.unsplash.com/premium_photo-1729688320712-36d388b688bd?w=600&auto=format&fit=crop&q=60",
+          story:
+            "https://images.unsplash.com/photo-1734066542583-faeab4d31c72?w=600&auto=format&fit=crop&q=60",
+        },
+      ];
+
+      var storiyan = document.querySelector("#storiyan");
+      var clutter = "";
+
+      arr.forEach(function (elem, idx) {
+        clutter += `<div class="story">
+                    <img id="${idx}" src="${elem.dp}" alt="">
+                  </div>`;
+      });
+      storiyan.innerHTML = clutter;
+
+      storiyan.addEventListener("click", function (e) {
+        if (e.target.tagName === "IMG") {
+          var id = e.target.id;
+          var fullscreen = document.querySelector("#fullscreen");
+          fullscreen.style.display = "block";
+          fullscreen.style.backgroundImage = `url(${arr[id].story})`;
+
+          setTimeout(function () {
+            fullscreen.style.display = "none";
+          }, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>
